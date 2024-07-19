@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Info Extractor</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 95%;
+            padding: 7px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+        .translation-fields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-group">
+      <input type="text" id="url" placeholder="Enter URL">
+      <button onclick="extractInfo()">Extract Info</button>
+	</div>
+    <br/>
+    <input type="text" id="title" readonly onclick="copyToClipboard('title')" placeholder="Title">
+	<p id='titleCopyAlert'></p>
+	<a href="" id="google-video-link" style="display:none;" target="_blank">Search for google video</a>
+    <input type="text" id="thumbnail" readonly placeholder="Thumbnail URL">
+	<img src="" id="thumbnail-img" />
+    <input type="text" id="videoUrl" readonly placeholder="Video URL">
+	<br/><br/>
+    <input type="text" id="duration" readonly placeholder="Duration">
+	<br/><br/>
+	<div class="form-group">
+	  <textarea id="google-video-html" placeholder="Enter Google Video Search HTML"></textarea>
+	  <button onclick="extractThumbnails();">Extract Thumbnails</button>
+    </div>
+	
+  </div>
+  
+  
+    <script>//https://www.google.com/search?q=DeepLush+24+07+17+Cc+Doll+Getting+In+Deep+XXX&tbm=vid
+        function extractInfo() {
+            const url = document.getElementById('url').value;
+            const id = url.split('x=')[1];
+            const titleInput = document.getElementById('title');
+            const googleVideoLink = document.getElementById('google-video-link');
+            const thumbnailInput = document.getElementById('thumbnail');
+            const thumbnaiImg = document.getElementById('thumbnail-img');
+            const videoUrlInput = document.getElementById('videoUrl');
+            const durationInput = document.getElementById('duration');
+
+            // Fetch the page and get the title
+            fetch(`fetch.php?id=${id}`)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const title = doc.querySelector('title').innerText;
+                    titleInput.value = title;
+					
+					googleVideoLink.href = `https://www.google.com/search?q=${title}&tbm=vid`;
+					googleVideoLink.style.display = '';
+                });
+
+            // Set the thumbnail and video URLs
+            thumbnailInput.value = `https://xbay.me//t/${id}.jpg`;
+			thumbnaiImg.src = `https://xbay.me//t/${id}.jpg`;
+            videoUrlInput.value = `https://s1.xbay.me/x/${id}.mp4`;
+			
+
+            // Fetch the duration via AJAX
+            /*fetch(`get-duration.php?id=${id}`)
+                .then(response => response.text())
+                .then(data => {
+                    durationInput.value = data;
+                });*/
+        }
+
+        function copyToClipboard(elementId) {
+            const input = document.getElementById(elementId);
+            const titleCopyAlert = document.getElementById('titleCopyAlert');
+            input.select();
+            input.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+			
+			titleCopyAlert.innerText = "Copied the text: " + input.value;
+            //alert("Copied the text: " + input.value);
+			
+			setTimeout(function() {
+				titleCopyAlert.style.display = 'none';
+			}, 4000);
+        }
+		
+		function extractThumbnails(){
+		  const googleVideoHtml = document.getElementById('google-video-html').value; console.log(googleVideoHtml);
+		  const titleInput = document.getElementById('title').value;
+		  const data = { googleVideoHtml, titleInput };
+		  
+		  fetch('extract-google-videos-thumbnails.php', {
+			method: 'POST', // Set method to POST
+			headers: {
+			  'Content-Type': 'application/json' // Set content type as JSON
+			},
+			body: JSON.stringify(data) // Convert data object to JSON string for body
+		  })
+		  .then(response => response.text())
+                .then(data => {
+                    if(data == 'ok'){}
+					else{}
+                })
+				.catch(error => console.error(error));
+
+		}
+    </script>
+	
+	
+	
+	<!--translation panel star here-->
+	
+</body>
+</html>

@@ -1,0 +1,123 @@
+baseURL = 'https://www.pornstar.monster/'
+languageCode = 'en-us'
+title = 'Pornstar.Monster'
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+theme = 'lightbi-hugo'
+
+
+googleAnalytics = "XXX"
+enableRobotsTXT = true
+enableGitInfo = false
+Paginate = 6
+
+[permalinks]
+  posts = '/:slug/'
+  tags = '/:slug/'
+  
+[minify]
+  minifyOutput = false
+  
+[params]
+    showRelatedPosts = true #for lightbi related posts
+    description = "Pornstar Monster"
+    author = "Pornstar Monster"
+    selfHosted = true
+	mainSections = ["post","posts"]
+	#dateFormat = "2 January 2023"
+	comments = false
+	readingTime = true
+	wordCount = true
+	useHLJS = false
+	socialShare = true
+	delayDisqus = true
+	summaryLength  = "9"
+	gcse = false
+	Lastmod = true
+	rss = true 
+	pagination = "10"
+	hideAuthor = true
+	darkMode = false
+
+  [params.mytags]
+	go = 'Go is developed by google.'
+	php = 'PHP is the most populer language for web developemnt.'
+
+
+
+#nav main menu
+
+[[menu.main]]
+    name = "Porn Stars"
+    url = "/PornStars/"
+    weight = 1	
+
+[[menu.main]]
+    name = "Top 10"
+    url = "/Top10/"
+    weight = 2
+
+[[menu.main]]
+    name = "Keywords"
+    url = "/PornKeywords/"
+    weight = 3
+	
+[[menu.main]]
+    name = "Indian"
+    url = "/Indian/"
+    weight = 4
+
+[[menu.main]]
+    name = "Videos"
+    url = "/Videos/"
+    weight = 5
+
+
+
+[[menu.main]]
+    name = "Photos"
+    url = "/Photos/"
+    weight = 6
+
+
+
+
+#menu for footer
+
+[[menu.footer]]
+    name = "Porn Stars"
+    url = "/PornStars/"
+    weight = 1	
+
+[[menu.footer]]
+    name = "Top 10"
+    url = "/Top10/"
+    weight = 2
+
+[[menu.footer]]
+    name = "Keywords"
+    url = "/PornKeywords/"
+    weight = 3
+	
+[[menu.footer]]
+    name = "Indian"
+    url = "/Indian/"
+    weight = 4
+
+[[menu.footer]]
+    name = "Videos"
+    url = "/Videos/"
+    weight = 5
+
+
+
+[[menu.footer]]
+    name = "Photos"
+    url = "/Photos/"
+    weight = 6
+	
+
+
+
