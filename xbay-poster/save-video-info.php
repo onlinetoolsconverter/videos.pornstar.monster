@@ -12,5 +12,13 @@ if (!$data) {
 
 $id = $data['videoID'];
 
-file_put_contents("xbay-data/$id-videoInfo.json", $rawData);
+$filePath = "xbay-data/$id/videoInfo.json";
+
+$dir = dirname($filePath);
+
+if (!is_dir($dir)) {
+    mkdir($dir, 0755, true); // Create directory with permissions and recursive
+}
+
+file_put_contents($filePath, $rawData);
 echo 'ok';

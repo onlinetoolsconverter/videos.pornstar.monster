@@ -128,6 +128,9 @@
 					this.addEventListener('readystatechange', function() {
 						if (this.readyState === 4) {
 							try {
+								
+								
+								
 								// Parse the request data to extract the "bn" field
 								var requestJson = JSON.parse(requestData);
 								var languageField = requestJson[0][2];
@@ -148,8 +151,20 @@
 									  titleTranslated = element.substring(3); // Remove "@#$" prefix
 									} else if (element.startsWith("@$#")) {
 									  metaDescriptionTranslated = element.substring(3); // Remove "@$#" prefix
-									} else if (element.startsWith("$#@")) {
-									  descriptionTranslated = element.substring(3); // Remove "$#@" prefix
+									} else if (element.startsWith("$#@") || element.startsWith("<a i=0>$#@")) {
+										
+									  let removePattern = /<a i=\d+>/g; // Pattern to match <a i=number>
+                                      let replacePattern = /<\/a>/g;    // Pattern to match </a>
+									  // Remove <a i=number> tags
+                                      descriptionTranslated = element.replace(removePattern, '');
+									  
+									  // Replace </a> with <br/>
+                                      descriptionTranslated = descriptionTranslated.replace(replacePattern, '<br/>'
+									  
+									  descriptionTranslated = descriptionTranslated.substring(3); // Remove "$#@" prefix
+									  
+									  
+									  );
 									} else if (element.startsWith("#$@")) {
 									  tagsTranslated = element.substring(3); // Remove "#$@" prefix
 									} else {

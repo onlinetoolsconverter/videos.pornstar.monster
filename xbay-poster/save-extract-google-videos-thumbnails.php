@@ -58,6 +58,14 @@ foreach ($scripts as $script) {
 //print_r($image_urls);
 // Use $image_urls as needed
 
-file_put_contents("xbay-data/$id-thumbnails.json", json_encode($image_urls));
+$filePath = "xbay-data/$id/thumbnails.json";
+
+$dir = dirname($filePath);
+
+if (!is_dir($dir)) {
+    mkdir($dir, 0755, true); // Create directory with permissions and recursive
+}
+
+file_put_contents($filePath, json_encode($image_urls));
 echo 'ok';
 ?>

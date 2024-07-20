@@ -1,6 +1,6 @@
-baseURL = 'https://www.pornstar.monster/'
+baseURL = 'https://videos.pornstar.monster/'
 languageCode = 'en-us'
-title = 'Pornstar.Monster'
+title = 'Free Porn Videos'
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
@@ -51,35 +51,10 @@ Paginate = 6
 
 [[menu.main]]
     name = "Porn Stars"
-    url = "/PornStars/"
+    url = "https://www.pornstar.monster/"
     weight = 1	
 
-[[menu.main]]
-    name = "Top 10"
-    url = "/Top10/"
-    weight = 2
 
-[[menu.main]]
-    name = "Keywords"
-    url = "/PornKeywords/"
-    weight = 3
-	
-[[menu.main]]
-    name = "Indian"
-    url = "/Indian/"
-    weight = 4
-
-[[menu.main]]
-    name = "Videos"
-    url = "/Videos/"
-    weight = 5
-
-
-
-[[menu.main]]
-    name = "Photos"
-    url = "/Photos/"
-    weight = 6
 
 
 

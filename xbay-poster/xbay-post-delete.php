@@ -20,6 +20,7 @@ foreach($languageCodes as $languageCode => $languageName){
 	$filename = "../content/posts/videos/$languageName/$videoID.html";
 	
 	if (unlink($filename) === false) {
-		throw new Exception("Failed to delete file: " . $file);
+		//throw new Exception("Failed to delete file: " . $file);
+		echo "Failed to delete file: " . $file . "<br/>\n";
 	}
 }

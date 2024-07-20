@@ -6,9 +6,9 @@ if($videoID == ''){
 }
 
 //cheack if the files exists and validate all the jsons 
-$videoInfo = validateAndReturnJson("xbay-data/$videoID-videoInfo.json"); 
-$thumbnails = validateAndReturnJson("xbay-data/$videoID-thumbnails.json");
-$translations = validateAndReturnJson("xbay-data/$videoID-translations.json");
+$videoInfo = validateAndReturnJson("xbay-data/$videoID/videoInfo.json"); 
+$thumbnails = validateAndReturnJson("xbay-data/$videoID/thumbnails.json");
+$translations = validateAndReturnJson("xbay-data/$videoID/translations.json");
 
 //validate duration exists or not
 $duration = trim($videoInfo['durationInput']);
@@ -65,6 +65,8 @@ foreach ($translations as $languageCode => $languageData) {
 	$languageName = $languageCodes[$languageCode];
 	
 	if($title != '' && $metaDescription != '' && $description != '' && $tags != '' && $languageName != ''){
+		
+		$title = $title . ' Video';
 		$slug = slugify($title);
 	
 	    $url = "$languageName/$slug";
@@ -108,6 +110,9 @@ if (file_put_contents($filename, $post_template) === false) {
 	
 	
 	}
+	
+//finally echo ok
+echo "ok";
 	
 	
 	

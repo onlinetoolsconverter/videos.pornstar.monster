@@ -16,7 +16,7 @@
 		  const videoID = document.getElementById('id').value;
 		  const data = { googleVideoHtml, titleInput, videoID };
 		  
-		  fetch('xbay-poster/extract-google-videos-thumbnails.php', {
+		  fetch('xbay-poster/save-extract-google-videos-thumbnails.php', {
 			method: 'POST', // Set method to POST
 			headers: {
 			  'Content-Type': 'application/json' // Set content type as JSON
