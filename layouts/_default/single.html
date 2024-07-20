@@ -10,14 +10,15 @@
         {{ if .Params.image }}
 		  {{ $externalURL := .Params.image }}
 		  {{ $randomNumber := div (mod (int (now.UnixNano)) 3) 1 }}
-		  {{ $newURL := printf "http://i%d.wp.com/%s" $randomNumber (replaceRE "^https?://(.*)" "$1" $externalURL) }}
+		  {{ $newURL := printf "http://i%d.wp.com/%s" $randomNumber (replaceRE "^https?://(.*)" "$1" $externalURL) }}>
+		  
 		  <img src="{{ $newURL }}" alt="{{ .Title }}" class="card-img-bottom img-fluid lazyload">
 		{{ end }}
 
    {{ end }}
 
         {{ if .Params.video }}
-        <video playsinline class="img-title" poster="{{ .Params.video.image }}" controls>
+        <video playsinline class="img-title" poster="{{ .Params.video.image | safeURL  }}" controls>
           <source src="{{ .Params.video.url }}">
         </video>
         {{ end }}

@@ -135,10 +135,29 @@
 
 								// Parse the response data to extract the first four fields
 								var responseJson = JSON.parse(this.responseText);
-								var titleTranslated = responseJson[0][0];
+								
+								/*not taking results by sequence anymore*/
+								/*var titleTranslated = responseJson[0][0];
 								var metaDescriptionTranslated = responseJson[0][1];
 								var descriptionTranslated = responseJson[0][2];
-								var tagsTranslated = responseJson[0][3];
+								var tagsTranslated = responseJson[0][3];*/
+
+								
+								for (const element of responseJson[0]) {console.log(element);
+									if (element.startsWith("@#$")) {
+									  titleTranslated = element.substring(3); // Remove "@#$" prefix
+									} else if (element.startsWith("@$#")) {
+									  metaDescriptionTranslated = element.substring(3); // Remove "@$#" prefix
+									} else if (element.startsWith("$#@")) {
+									  descriptionTranslated = element.substring(3); // Remove "$#@" prefix
+									} else if (element.startsWith("#$@")) {
+									  tagsTranslated = element.substring(3); // Remove "#$@" prefix
+									} else {
+									  // Handle unexpected elements (if any)
+									  console.warn("Unexpected element:", element);
+									}
+								}
+								
 								console.log('Response title:', titleTranslated);
 								console.log('Response metaDescription:', metaDescriptionTranslated);
 								console.log('Response description:', descriptionTranslated);
@@ -196,29 +215,36 @@
             const translationFields = document.getElementById('translationFields');
             translationFields.innerHTML = '';
 
+            /*when creating fields for translations 
+			i am inserting char sets to determine  the fields when receiving back them
+			@#$ for tile
+            @$# for metaDescription
+            $#@ for description
+            #$@ for tags*/
+
             languages.forEach(lang => {
                 const titleDiv = document.createElement('div');
                 titleDiv.id = `title_${lang}`;
                 titleDiv.className  = 'notranslate';
-                titleDiv.innerText = title;
+                titleDiv.innerText = '@#$' + title;
                 translationFields.appendChild(titleDiv);
 
                 const metaDescriptionDiv = document.createElement('div');
                 metaDescriptionDiv.id = `meta_description_${lang}`;
                 metaDescriptionDiv.className  = 'notranslate';
-                metaDescriptionDiv.innerText = metaDescription;
+                metaDescriptionDiv.innerText = '@$#' + metaDescription;
                 translationFields.appendChild(metaDescriptionDiv);
 				
 				const descriptionDiv = document.createElement('div');
                 descriptionDiv.id = `description_${lang}`;
                 descriptionDiv.className  = 'notranslate';
-                descriptionDiv.innerText = description;
+                descriptionDiv.innerText = '$#@' + description;
                 translationFields.appendChild(descriptionDiv);
 				
 				const tagsDiv = document.createElement('div');
                 tagsDiv.id = `tags_${lang}`;
                 tagsDiv.className  = 'notranslate';
-                tagsDiv.innerText = tags;
+                tagsDiv.innerText = '#$@' + tags;
                 translationFields.appendChild(tagsDiv);
             });
         }
