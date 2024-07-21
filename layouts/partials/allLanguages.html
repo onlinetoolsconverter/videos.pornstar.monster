@@ -1,0 +1,6 @@
+
+{{ range $.Site.Home.AllTranslations }}
+<li class="d-inline-block">
+  <a href="{{ .RelPermalink }}" style="font-size: 16px;" title="{{ .Language.LanguageName }} Videos">{{ .Language.LanguageName }}</a> | 
+</li>
+{{ end }}

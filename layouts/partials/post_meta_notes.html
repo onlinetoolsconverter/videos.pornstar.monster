@@ -16,6 +16,7 @@
   &nbsp;|&nbsp;<i class="bi bi-book">📖</i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
   {{ end }}
 
+{{ if .Site.Params.showTranslations }} <!--i created this var in config to hide translated pages links under thumbnails-->
   {{ if .IsTranslated -}}
   {{- $sortedTranslations := sort .Translations "Site.Language.Weight" -}}
   {{- $links := apply $sortedTranslations "partial" "translation_link.html" "." -}}
@@ -23,4 +24,5 @@
   {{- $linksOutput := delimit $cleanLinks (i18n "translationsSeparator") -}}
   &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput }}
   {{- end }}
+{{ end }}
 </span>

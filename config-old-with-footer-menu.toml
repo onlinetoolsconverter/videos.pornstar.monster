@@ -1,0 +1,334 @@
+baseURL = 'https://videos.pornstar.monster/'
+languageCode = 'en-us'
+title = 'Free Porn Videos'
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+theme = 'lightbi-hugo'
+
+
+googleAnalytics = "XXX"
+enableRobotsTXT = true
+enableGitInfo = false
+Paginate = 6
+
+[permalinks]
+  posts = '/:slug/'
+  #tags = '/:slug/'
+  
+[minify]
+  minifyOutput = false
+  
+[params]
+    showRelatedPosts = true #for lightbi related posts
+    description = "Pornstar Monster"
+    author = "Pornstar Monster"
+    selfHosted = true
+	mainSections = ["post","posts"]
+	#dateFormat = "2 January 2023"
+	comments = false
+	readingTime = true
+	wordCount = true
+	useHLJS = false
+	socialShare = true
+	delayDisqus = true
+	summaryLength  = "9"
+	gcse = false
+	Lastmod = true
+	rss = true 
+	pagination = "10"
+	hideAuthor = true
+	darkMode = false
+
+  [params.mytags]
+	go = 'Go is developed by google.'
+	php = 'PHP is the most populer language for web developemnt.'
+
+
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    title = "Your Site Title in English"    
+    #baseURL = 'https://videos.pornstar.monster/'
+
+  [languages.bn]
+    languageName = "Bengali"
+    weight = 2
+    title = "Your Site Title in Bengali"
+    
+    #baseURL = 'https://videos.pornstar.monster/bangla'
+
+  [languages.hi]
+    languageName = "Hindi"
+    weight = 3
+    title = "Your Site Title in Hindi"    
+    #baseURL = 'https://videos.pornstar.monster/hindi'
+
+#nav main menu
+
+[[menu.main]]
+    name = "Porn Stars"
+    url = "https://www.pornstar.monster/"
+    weight = 1	
+
+
+
+
+
+
+#menu for footer
+
+ [[menu.footer]]
+    name = "हिन्दी"
+    url = "/hindi/"
+    weight = 1
+
+  [[menu.footer]]
+    name = "বাংলা"
+    url = "/bengali/"
+    weight = 2
+
+  [[menu.footer]]
+    name = "Español"
+    url = "/spanish/"
+    weight = 3
+
+  [[menu.footer]]
+    name = "Русский"
+    url = "/russian/"
+    weight = 4
+
+  [[menu.footer]]
+    name = "Deutsch"
+    url = "/german/"
+    weight = 5
+
+  [[menu.footer]]
+    name = "Français"
+    url = "/french/"
+    weight = 6
+
+  [[menu.footer]]
+    name = "日本語"
+    url = "/japanese/"
+    weight = 7
+
+  [[menu.footer]]
+    name = "Português"
+    url = "/portuguese/"
+    weight = 8
+
+  [[menu.footer]]
+    name = "Türkçe"
+    url = "/turkish/"
+    weight = 9
+
+  [[menu.footer]]
+    name = "Italiano"
+    url = "/italian/"
+    weight = 10
+
+  [[menu.footer]]
+    name = "فارسی"
+    url = "/persian-farsi/"
+    weight = 11
+
+  [[menu.footer]]
+    name = "Nederlands"
+    url = "/dutch/"
+    weight = 12
+
+  [[menu.footer]]
+    name = "Polski"
+    url = "/polish/"
+    weight = 13
+
+  [[menu.footer]]
+    name = "中文"
+    url = "/chinese/"
+    weight = 14
+
+  [[menu.footer]]
+    name = "Tiếng Việt"
+    url = "/vietnamese/"
+    weight = 15
+
+  [[menu.footer]]
+    name = "Bahasa Indonesia"
+    url = "/indonesian/"
+    weight = 16
+
+  [[menu.footer]]
+    name = "Čeština"
+    url = "/czech/"
+    weight = 17
+
+  [[menu.footer]]
+    name = "한국어"
+    url = "/korean/"
+    weight = 18
+
+  [[menu.footer]]
+    name = "Українська"
+    url = "/ukrainian/"
+    weight = 19
+
+  [[menu.footer]]
+    name = "العربية"
+    url = "/arabic/"
+    weight = 20
+
+  [[menu.footer]]
+    name = "Ελληνικά"
+    url = "/greek/"
+    weight = 21
+
+  [[menu.footer]]
+    name = "עברית"
+    url = "/hebrew/"
+    weight = 22
+
+  [[menu.footer]]
+    name = "Svenska"
+    url = "/swedish/"
+    weight = 23
+
+  [[menu.footer]]
+    name = "Română"
+    url = "/romanian/"
+    weight = 24
+
+  [[menu.footer]]
+    name = "Magyar"
+    url = "/hungarian/"
+    weight = 25
+
+  [[menu.footer]]
+    name = "ไทย"
+    url = "/thai/"
+    weight = 26
+
+  [[menu.footer]]
+    name = "Dansk"
+    url = "/danish/"
+    weight = 27
+
+  [[menu.footer]]
+    name = "Slovenský"
+    url = "/slovak/"
+    weight = 28
+
+  [[menu.footer]]
+    name = "Suomi"
+    url = "/finnish/"
+    weight = 29
+
+  [[menu.footer]]
+    name = "Српски"
+    url = "/serbian/"
+    weight = 30
+
+  [[menu.footer]]
+    name = "Norsk"
+    url = "/norwegian/"
+    weight = 31
+
+  [[menu.footer]]
+    name = "Български"
+    url = "/bulgarian/"
+    weight = 32
+
+  [[menu.footer]]
+    name = "Lietuvių"
+    url = "/lithuanian/"
+    weight = 33
+
+  [[menu.footer]]
+    name = "Slovenščina"
+    url = "/slovenian/"
+    weight = 34
+
+  [[menu.footer]]
+    name = "Català"
+    url = "/catalan/"
+    weight = 35
+
+  [[menu.footer]]
+    name = "Eesti"
+    url = "/estonian/"
+    weight = 36
+
+  [[menu.footer]]
+    name = "Latviešu"
+    url = "/latvian/"
+    weight = 37
+
+  [[menu.footer]]
+    name = "Hrvatski"
+    url = "/croatian/"
+    weight = 38
+
+  [[menu.footer]]
+    name = "অসমীয়া"
+    url = "/assamese/"
+    weight = 39
+
+  [[menu.footer]]
+    name = "ગુજરાતી"
+    url = "/gujarati/"
+    weight = 40
+
+  [[menu.footer]]
+    name = "മലയാളം"
+    url = "/malayalam/"
+    weight = 41
+
+  [[menu.footer]]
+    name = "नेपाली"
+    url = "/nepali/"
+    weight = 42
+
+  [[menu.footer]]
+    name = "मराठी"
+    url = "/marathi/"
+    weight = 43
+
+  [[menu.footer]]
+    name = "ਪੰਜਾਬੀ"
+    url = "/punjabi/"
+    weight = 44
+
+  [[menu.footer]]
+    name = "தமிழ்"
+    url = "/tamil/"
+    weight = 45
+
+  [[menu.footer]]
+    name = "ಕನ್ನಡ"
+    url = "/kannada/"
+    weight = 46
+
+  [[menu.footer]]
+    name = "తెలుగు"
+    url = "/telugu/"
+    weight = 47
+
+  [[menu.footer]]
+    name = "ଓଡ଼ିଆ"
+    url = "/oriya/"
+    weight = 48
+
+  [[menu.footer]]
+    name = "اردو"
+    url = "/urdu/"
+    weight = 49
+
+  [[menu.footer]]
+    name = "Bahasa Melayu"
+    url = "/malay/"
+    weight = 50
+
+
