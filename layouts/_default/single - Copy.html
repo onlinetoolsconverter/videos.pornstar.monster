@@ -164,22 +164,21 @@
       </div>
 
       {{ if .Site.Params.showRelatedPosts }}
-		  {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink)
-		  }}
-		    {{ $.Scratch.Set "has_related" true }}
-		  {{ end }}
+      {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink)
+      }}
+      {{ $.Scratch.Set "has_related" true }}
+      {{ end }}
 
-        {{ if $.Scratch.Get "has_related" }}
+      {{ if $.Scratch.Get "has_related" }}
 
-          {{ $num_to_show := .Site.Params.related_content_limit | default 3 }}
-		  {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!="
-		  .Permalink) }}
+      {{ $num_to_show := .Site.Params.related_content_limit | default 3 }}
+      {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!="
+      .Permalink) }}
 
-		    {{ partial "post_preview_bottom_card.html" .}}
-		  {{ end }}
-		  
+      {{ partial "post_preview_bottom_card.html" .}}
+      {{ end }}
 
-        {{ end }}
+      {{ end }}
       {{ end }}
     </div>
   </div>
