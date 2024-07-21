@@ -51,23 +51,21 @@ Paginate = 6
   [languages.en]
     languageName = "English"
     weight = 1
-    title = "Your Site Title in English"
-    
-    baseURL = 'https://videos.pornstar.monster/'
+    title = "Your Site Title in English"    
+    #baseURL = 'https://videos.pornstar.monster/'
 
   [languages.bn]
     languageName = "Bengali"
     weight = 2
     title = "Your Site Title in Bengali"
     
-    baseURL = 'https://videos.pornstar.monster/bangla'
+    #baseURL = 'https://videos.pornstar.monster/bangla'
 
   [languages.hi]
     languageName = "Hindi"
     weight = 3
-    title = "Your Site Title in Hindi"
-    
-    baseURL = 'https://videos.pornstar.monster/hindi'
+    title = "Your Site Title in Hindi"    
+    #baseURL = 'https://videos.pornstar.monster/hindi'
 
 #nav main menu
 
