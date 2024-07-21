@@ -68,7 +68,7 @@ foreach ($translations as $languageCode => $languageData) {
 		
 		$title = $title . ' Video';
 		
-		$truncatedText = truncateString($title, 100);
+		$truncatedText = truncateString($title, 95);
 		$slug = slugify($truncatedText);
 	
 	    //$url = "$languageName/$slug";
@@ -191,8 +191,8 @@ function slugify($string) {
 }
 
 
-//need to truncate the title for slugify, cloudflare don not support more than 100 chars long name
-function truncateString($text, $limit = 100, $encoding = 'UTF-8') {
+//need to truncate the title for slugify, cloudflare don not support more than 95 chars long name
+function truncateString($text, $limit = 95, $encoding = 'UTF-8') {
   $words = preg_split('/\s+/', $text); // Split on one or more whitespace characters
   $output = '';
   $i = 0;
