@@ -72,7 +72,13 @@
       {{ if .Params.tags }}
       <div class="blog-tags">
         {{ range .Params.tags }}
-        <a href="{{ $.Site.LanguagePrefix | absURL }}{{ . | urlize }}/">{{ . }}</a>
+        <!--<a href="{{ $.Site.LanguagePrefix | absURL }}/{{ . | urlize }}/">{{ . }}</a>-->
+		{{- if eq $.Site.Language.Lang "en" -}}
+		  <a href="{{ $.Site.BaseURL | absURL }}{{ . | urlize }}/">{{ . }}</a>
+		{{- else -}}
+		  <a href="{{ $.Site.LanguagePrefix | absURL }}/{{ . | urlize }}/">{{ . }}</a>
+		{{- end -}}
+		
         {{ end }}
       </div>
       {{ end }}
