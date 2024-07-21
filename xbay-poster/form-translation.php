@@ -42,12 +42,12 @@
 	
 	
 	const languages = [	         
-            "hi", "bn"/*, "es", "ru", "de", "fr", "ja", "pt", "tr", "it", "fa", 
+            "hi", "bn", "es", "ru", "de", "fr", "ja", "pt", "tr", "it", "fa", 
 			"zh-CN", "iw",
             "nl", "pl",  "vi", "id", "cs", "ko", "uk", "ar", "el",  
             "sv", "ro", "hu", "th", "da", "sk", "fi", "sr", "no", "bg", "lt", 
             "sl", "ca", "et", "lv",  "hr",
-			"as", "gu", "ml", "ne", "mr", "pa", "ta", "ka", "te", "or", "ur", "ms"*/
+			"as", "gu", "ml", "ne", "mr", "pa", "ta", "ka", "te", "or", "ur", "ms"
         ];
 		
 		
@@ -159,12 +159,11 @@
                                       descriptionTranslated = element.replace(removePattern, '');
 									  
 									  // Replace </a> with <br/>
-                                      descriptionTranslated = descriptionTranslated.replace(replacePattern, '<br/>'
+                                      descriptionTranslated = descriptionTranslated.replace(replacePattern, '<br/>');
 									  
 									  descriptionTranslated = descriptionTranslated.substring(3); // Remove "$#@" prefix
 									  
 									  
-									  );
 									} else if (element.startsWith("#$@")) {
 									  tagsTranslated = element.substring(3); // Remove "#$@" prefix
 									} else {
@@ -182,7 +181,7 @@
 									title: titleTranslated,
 									metaDescription: metaDescriptionTranslated,
 									description: descriptionTranslated,
-									tags: languageCodes[languageField] + ', ' + tagsTranslated
+									tags: tagsTranslated
 								};
 								
 								

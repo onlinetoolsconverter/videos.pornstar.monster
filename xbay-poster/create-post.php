@@ -69,15 +69,15 @@ foreach ($translations as $languageCode => $languageData) {
 		$title = $title . ' Video';
 		$slug = slugify($title);
 	
-	    $url = "$languageName/$slug";
+	    //$url = "$languageName/$slug";
 		
 		//get random thumbnails
 		$randomKey = array_rand($thumbnails, 1);
         $randomThumbnail = $thumbnails[$randomKey];
 		
 		//excludeFromHomePage: true in front matter for all non english languages
-		$excludeFromHomePage = 'true';
-		if($languageName == "English"){ $excludeFromHomePage = 'false';}
+		//$excludeFromHomePage = 'true';
+		//if($languageName == "English"){ $excludeFromHomePage = 'false';}
 		
 		
 		
@@ -85,13 +85,10 @@ foreach ($translations as $languageCode => $languageData) {
 ---
 title: "$title"
 slug: "$slug"
-url: "$url"
 description: "$metaDescription"
 date: "$timeStamp"
 tags: [$tags]
 image: "$randomThumbnail"
-images: []
-excludeFromHomePage: $excludeFromHomePage
 video: 
  url: "$videoUrl" 
  duration: "$duration" 
@@ -100,9 +97,19 @@ video:
 
 <p>$description</p>
 EOF;
-	
+
+//when creating post, for $languageCode zh-CN is changed to zh (hugo don't recognise zh-CN)
+if($languageCode == 'zh-CN'){ $languageCode = 'zh'; }
+
 //create posts
-$filename = "../content/posts/videos/$languageName/$videoID.html";
+$filename = "../content/posts/videos/$videoID/$languageName.$languageCode.html";
+
+
+$dir = dirname($filename);
+
+if (!is_dir($dir)) {
+	mkdir($dir, 0755, true); // Create directory with permissions and recursive
+}
 
 if (file_put_contents($filename, $post_template) === false) {
         throw new Exception("Failed to create file: " . $filename);
@@ -111,16 +118,13 @@ if (file_put_contents($filename, $post_template) === false) {
 	
 	}
 	
-//finally echo ok
-echo "ok";
-	
-	
-	
+
     //echo "Title=> " . $title . "\n";
     //echo "Tags=> " . $tags . "\n\n";
 }
 
-
+//finally echo ok
+echo "ok";
 //print_r($translations);
 
 

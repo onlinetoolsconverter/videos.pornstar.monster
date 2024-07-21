@@ -51,24 +51,265 @@ Paginate = 6
 
 [languages]
   [languages.en]
-    languageName = "English"
-    weight = 1
-    title = "Your Site Title in English"    
-    #baseURL = 'https://videos.pornstar.monster/'
+  languageName = "English"
+  weight = 1
+  title = "Your Site Title in English"
 
-  [languages.bn]
-    languageName = "Bengali"
-    weight = 2
-    title = "Your Site Title in Bengali"
-    
-    #baseURL = 'https://videos.pornstar.monster/bangla'
+[languages.bn]
+  languageName = "বাংলা"
+  weight = 2
+  title = "Your Site Title in Bengali"
+
+[languages.hi]
+  languageName = "हिन्दी"
+  weight = 3
+  title = "Your Site Title in Hindi"
+
+[languages.es]
+  languageName = "Español"
+  weight = 4
+  title = "Your Site Title in Spanish"
+
+[languages.ru]
+  languageName = "Русский"
+  weight = 5
+  title = "Your Site Title in Russian"
+
+[languages.de]
+  languageName = "Deutsch"
+  weight = 6
+  title = "Your Site Title in German"
+
+[languages.fr]
+  languageName = "Français"
+  weight = 7
+  title = "Your Site Title in French"
+
+[languages.ja]
+  languageName = "日本語"
+  weight = 8
+  title = "Your Site Title in Japanese"
+
+[languages.pt]
+  languageName = "Português"
+  weight = 9
+  title = "Your Site Title in Portuguese"
+
+[languages.tr]
+  languageName = "Türkçe"
+  weight = 10
+  title = "Your Site Title in Turkish"
+
+[languages.it]
+  languageName = "Italiano"
+  weight = 11
+  title = "Your Site Title in Italian"
+
+[languages.fa]
+  languageName = "فارسی"
+  languageDirection = "rtl"
+  weight = 12
+  title = "Your Site Title in Persian-Farsi"
+
+[languages.nl]
+  languageName = "Nederlands"
+  weight = 13
+  title = "Your Site Title in Dutch"
+
+[languages.pl]
+  languageName = "Polski"
+  weight = 14
+  title = "Your Site Title in Polish"
+
+[languages.zh]
+  languageName = "中文"
+  weight = 15
+  title = "Your Site Title in Chinese"
+
+[languages.vi]
+  languageName = "Tiếng Việt"
+  weight = 16
+  title = "Your Site Title in Vietnamese"
+
+[languages.id]
+  languageName = "Bahasa Indonesia"
+  weight = 17
+  title = "Your Site Title in Indonesian"
+
+[languages.cs]
+  languageName = "Čeština"
+  weight = 18
+  title = "Your Site Title in Czech"
+
+[languages.ko]
+  languageName = "한국어"
+  weight = 19
+  title = "Your Site Title in Korean"
+
+[languages.uk]
+  languageName = "Українська"
+  weight = 20
+  title = "Your Site Title in Ukrainian"
+
+[languages.ar]
+  languageName = "العربية"
+  languageDirection = "rtl"
+  weight = 21
+  title = "Your Site Title in Arabic"
+
+[languages.el]
+  languageName = "Ελληνικά"
+  weight = 22
+  title = "Your Site Title in Greek"
+
+[languages.iw]
+  languageName = "עברית"
+  languageDirection = "rtl"
+  weight = 23
+  title = "Your Site Title in Hebrew"
+
+[languages.sv]
+  languageName = "Svenska"
+  weight = 24
+  title = "Your Site Title in Swedish"
+
+[languages.ro]
+  languageName = "Română"
+  weight = 25
+  title = "Your Site Title in Romanian"
+
+[languages.hu]
+  languageName = "Magyar"
+  weight = 26
+  title = "Your Site Title in Hungarian"
+
+[languages.th]
+  languageName = "ไทย"
+  weight = 27
+  title = "Your Site Title in Thai"
+
+[languages.da]
+  languageName = "Dansk"
+  weight = 28
+  title = "Your Site Title in Danish"
+
+[languages.sk]
+  languageName = "Slovenčina"
+  weight = 29
+  title = "Your Site Title in Slovak"
+
+[languages.fi]
+  languageName = "Suomi"
+  weight = 30
+  title = "Your Site Title in Finnish"
+
+[languages.sr]
+  languageName = "Српски"
+  weight = 31
+  title = "Your Site Title in Serbian"
+
+[languages.no]
+  languageName = "Norsk"
+  weight = 32
+  title = "Your Site Title in Norwegian"
+
+[languages.bg]
+  languageName = "Български"
+  weight = 33
+  title = "Your Site Title in Bulgarian"
+
+[languages.lt]
+  languageName = "Lietuvių"
+  weight = 34
+  title = "Your Site Title in Lithuanian"
+
+[languages.sl]
+  languageName = "Slovenščina"
+  weight = 35
+  title = "Your Site Title in Slovenian"
+
+[languages.ca]
+  languageName = "Català"
+  weight = 36
+  title = "Your Site Title in Catalan"
+
+[languages.et]
+  languageName = "Eesti"
+  weight = 37
+  title = "Your Site Title in Estonian"
+
+[languages.lv]
+  languageName = "Latviešu"
+  weight = 38
+  title = "Your Site Title in Latvian"
+
+[languages.hr]
+  languageName = "Hrvatski"
+  weight = 39
+  title = "Your Site Title in Croatian"
+
+[languages.as]
+  languageName = "অসমীয়া"
+  weight = 40
+  title = "Your Site Title in Assamese"
+
+[languages.gu]
+  languageName = "ગુજરાતી"
+  weight = 41
+  title = "Your Site Title in Gujarati"
+
+[languages.ml]
+  languageName = "മലയാളം"
+  weight = 42
+  title = "Your Site Title in Malayalam"
+
+[languages.ne]
+  languageName = "नेपाली"
+  weight = 43
+  title = "Your Site Title in Nepali"
+
+[languages.mr]
+  languageName = "मराठी"
+  weight = 44
+  title = "Your Site Title in Marathi"
+
+[languages.pa]
+  languageName = "ਪੰਜਾਬੀ"
+  weight = 45
+  title = "Your Site Title in Punjabi"
+
+[languages.ta]
+  languageName = "தமிழ்"
+  weight = 46
+  title = "Your Site Title in Tamil"
+
+[languages.ka]
+  languageName = "ქართული"
+  weight = 47
+  title = "Your Site Title in Kannada"
+
+[languages.te]
+  languageName = "తెలుగు"
+  weight = 48
+  title = "Your Site Title in Telugu"
 
 
-  [languages.hi]
-    languageName = "Hindi"
-    weight = 3
-    title = "Your Site Title in Hindi"    
-    #baseURL = 'https://videos.pornstar.monster/hindi'
+[languages.or]
+  languageName = "ଓଡ଼ିଆ"
+  weight = 49
+  title = "Your Site Title in Oriya"
+
+[languages.ur]
+  languageName = "اردو"
+  weight = 50
+  title = "Your Site Title in Urdu"
+
+[languages.ms]
+  languageName = "Bahasa Melayu"
+  weight = 51
+  title = "Your Site Title in Malay"
+   
+
 
 #nav main menu
 
