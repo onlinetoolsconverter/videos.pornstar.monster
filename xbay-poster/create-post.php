@@ -67,7 +67,9 @@ foreach ($translations as $languageCode => $languageData) {
 	if($title != '' && $metaDescription != '' && $description != '' && $tags != '' && $languageName != ''){
 		
 		$title = $title . ' Video';
-		$slug = slugify($title);
+		
+		$truncatedText = truncateString($title, 100);
+		$slug = slugify($truncatedText);
 	
 	    //$url = "$languageName/$slug";
 		
@@ -188,6 +190,20 @@ function slugify($string) {
     return $string;
 }
 
+
+//need to truncate the title for slugify, cloudflare don not support more than 100 chars long name
+function truncateString($text, $limit = 100, $encoding = 'UTF-8') {
+  $words = preg_split('/\s+/', $text); // Split on one or more whitespace characters
+  $output = '';
+  $i = 0;
+
+  while (isset($words[$i]) && mb_strlen($output, $encoding) + mb_strlen($words[$i], $encoding) + 1 <= $limit) {
+    $output .= $words[$i] . ' ';
+    $i++;
+  }
+
+  return trim($output, ' ');
+}
 
 //not using it for now
 function validateDuration($duration) {
