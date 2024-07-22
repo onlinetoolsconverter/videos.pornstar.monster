@@ -159,7 +159,7 @@
                                       descriptionTranslated = element.replace(removePattern, '');
 									  
 									  // Replace </a> with <br/>
-                                      descriptionTranslated = descriptionTranslated.replace(replacePattern, '<br/>');
+                                      descriptionTranslated = descriptionTranslated.replace(replacePattern, '<br/><br/>');
 									  
 									  descriptionTranslated = descriptionTranslated.substring(3); // Remove "$#@" prefix
 									  
