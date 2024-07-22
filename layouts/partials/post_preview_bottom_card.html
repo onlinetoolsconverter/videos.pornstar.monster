@@ -4,7 +4,7 @@
         
 		
 		{{ if .Params.image }}
-		  <img src="{{ .Params.image | safeURL }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload" width="400px" height="225px">
+		  <img src="{{ .Params.image | safeURL }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload thumbnail-enhance" width="400px" height="225px">
 		  
 		  {{ if .Params.video }}
            <div class="duration">
