@@ -34,6 +34,9 @@
             const thumbnaiImg2 = document.getElementById('thumbnail-img2');
             const videoUrlInput = document.getElementById('videoUrl');
             const durationInput = document.getElementById('duration');
+			
+			//translation form title
+			const translationTitleInput = document.getElementById('title');
 
             // Fetch the page and get the title
             fetch(`xbay-poster/fetch.php?id=${id}`)
@@ -42,7 +45,13 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data, 'text/html');
                     const title = doc.querySelector('title').innerText;
-                    titleInput.value = title;
+					
+					//remove date from title
+					let title_mod = title.replace(/\d{2}\s\d{2}\s\d{2}/g, '');
+                    titleInput.value = title_mod;
+					
+					//translation form title
+					translationTitleInput.value = title_mod;
 					
 					googleVideoLink.href = `https://www.google.com/search?q=${title}&tbm=vid`;
 					googleVideoLink.style.display = '';

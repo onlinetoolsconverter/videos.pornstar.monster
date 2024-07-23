@@ -8,11 +8,14 @@
 		<div class="form-group">
             <label for="meta-description" class="notranslate">Meta Description (English)</label>
             <textarea id="meta-description" rows="4" required></textarea>
+			<span id="char-count" class="notranslate"></span>
+			<button onclick="writeMetaDescriptionAI()" class="notranslate">Write Meta Description (AI)</button>
         </div>
 		
         <div class="form-group">
             <label for="description" class="notranslate">Description (English)</label>
             <textarea id="description" rows="5" required></textarea>
+			<button onclick="writeDescriptionAI()" class="notranslate">Write Description (AI)</button>
         </div>
 		
 		<div class="form-group">
@@ -20,7 +23,7 @@
             <input type="text" id="tags" rows="5" required>
         </div>
 		
-        <button onclick="translateAndSave()" class="notranslate">Translate and Save</button>
+        <button onclick="translateAndSave()" class="notranslate">Translate and Save to JSON</button>
 		
         <div id="google_translate_element" class="hidden"></div>
 		
@@ -146,7 +149,7 @@
 								var tagsTranslated = responseJson[0][3];*/
 
 								
-								for (const element of responseJson[0]) {console.log(element);
+								for (const element of responseJson[0]) {//console.log(element);
 									if (element.startsWith("@#$")) {
 									  titleTranslated = element.substring(3); // Remove "@#$" prefix
 									} else if (element.startsWith("@$#")) {
@@ -172,10 +175,10 @@
 									}
 								}
 								
-								console.log('Response title:', titleTranslated);
-								console.log('Response metaDescription:', metaDescriptionTranslated);
-								console.log('Response description:', descriptionTranslated);
-								console.log('Response tags:', tagsTranslated);
+								//console.log('Response title:', titleTranslated);
+								//console.log('Response metaDescription:', metaDescriptionTranslated);
+								//console.log('Response description:', descriptionTranslated);
+								//console.log('Response tags:', tagsTranslated);
 								
 								translations[languageField] = {
 									title: titleTranslated,
@@ -310,7 +313,7 @@
                 document.querySelector('.goog-te-combo').dispatchEvent(new Event('change'));
 
                 // Wait for translation to be applied
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await new Promise(resolve => setTimeout(resolve, 1500));
 				
 				
 			}
@@ -337,5 +340,68 @@
                 console.error('Error:', error);
             });
         }
+		
+		
+		
+		/*AI section*/
+		
+		const titleField = document.getElementById('title');
+		const metaDescriptionField = document.getElementById('meta-description');
+		const descriptionField = document.getElementById('description');
+		const charCounter = document.getElementById('char-count');
+
+		titleField.addEventListener('input', () => {
+		  metaDescriptionField.value = `Write a meta description in this topic: ${titleField.value}`;
+		  descriptionField.value = `Make long paragraph in this topic: ${titleField.value}`;
+		  updateCharCount();
+		});
+		
+		metaDescriptionField.addEventListener('input', () => {
+		  updateCharCount();
+		});
+
+		function updateCharCount() {
+		  const charCount = metaDescriptionField.value.length;
+		  charCounter.textContent = `${charCount}/140`; // 140 for meta description
+		}
+		
+		function writeMetaDescriptionAI(){
+			const formData = new FormData();
+            formData.append('text', metaDescriptionField.value);
+            //formData.append('filename', filename);
+
+            fetch('xbay-poster/AI-fetch-meta-description.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+			    metaDescriptionField.value = result;
+				updateCharCount();
+			  
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+		}
+		
+		function writeDescriptionAI(){
+			const formData = new FormData();
+            formData.append('text', descriptionField.value);
+            //formData.append('filename', filename);
+
+            fetch('xbay-poster/AI-fetch-description.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+			  descriptionField.value = result;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+		}
+
 
 	</script>

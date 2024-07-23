@@ -27,8 +27,10 @@ if (isset($imageValidation['error'])) {
 
 
 //add original thumbnails from xbay.me
-$thumbnails['thumb_1'] = "https://xbay.me//t/$videoID.jpg";
-$thumbnails['thumb_2'] = "https://xbay.me//t/$videoID.jpg?n";
+$original_thumbnail1 = "https://xbay.me//t/$videoID.jpg";
+$original_thumbnail2 = "https://xbay.me//t/$videoID.jpg?n";
+$thumbnails['thumb_1'] = $original_thumbnail1;
+$thumbnails['thumb_2'] = $original_thumbnail2;
 
 
 
@@ -76,6 +78,8 @@ foreach ($translations as $languageCode => $languageData) {
 		//get random thumbnails
 		$randomKey = array_rand($thumbnails, 1);
         $randomThumbnail = $thumbnails[$randomKey];
+		
+		if($languageCode == 'en') { $randomThumbnail = $original_thumbnail1; }
 		
 		//excludeFromHomePage: true in front matter for all non english languages
 		//$excludeFromHomePage = 'true';
@@ -197,12 +201,12 @@ function truncateString($text, $limit = 95, $encoding = 'UTF-8') {
   $output = '';
   $i = 0;
 
-  while (isset($words[$i]) && mb_strlen($output, $encoding) + mb_strlen($words[$i], $encoding) + 1 <= $limit) {
-    $output .= $words[$i] . ' ';
+  while (isset($words[$i]) && (mb_strlen($output, $encoding) + mb_strlen($words[$i], $encoding) + ($i > 0 ? 1 : 0)) <= $limit) {
+    $output .= ($i > 0 ? ' ' : '') . $words[$i];
     $i++;
   }
 
-  return trim($output, ' ');
+  return $output;
 }
 
 //not using it for now

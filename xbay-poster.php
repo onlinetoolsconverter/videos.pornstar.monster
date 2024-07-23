@@ -66,6 +66,8 @@
 <br/>
 
 <?php require_once("xbay-poster/form-creat-post.php"); ?>
+
+<?php require_once("xbay-poster/page-up-down.php"); ?>
 </body>
 </html>
 
