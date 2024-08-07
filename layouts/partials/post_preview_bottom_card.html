@@ -4,7 +4,15 @@
         
 		
 		{{ if .Params.image }}
-		  <img src="{{ .Params.image | safeURL }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload thumbnail-enhance" width="400px" height="225px">
+		  {{ $externalURL := .Params.image }}
+		  
+		  {{ $randomNumber := index (shuffle (seq 0 2)) 0 }}
+		  {{ $newURL := printf "http://i%d.wp.com/%s?w=300" $randomNumber (replaceRE "^https?://(.*)" "$1" $externalURL) }}
+		  <img src="{{ $newURL }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload" width="400px" height="225px">
+		  
+		  <!--if you want to put base64 images-->
+		  <!--img src="{{ .Params.image | safeURL }}" alt="{{ .Title }}" class="card-img-top img-fluid lazyload thumbnail-enhance" width="400px" height="225px"-->
+
 		  
 		  {{ if .Params.video }}
            <div class="duration">
@@ -23,6 +31,9 @@
                     {{ .Params.subtitle }}
                 </h3>
                 {{ end }}
+			
+			<!--for videos don't show word count or description-->
+			{{ if not .Params.video }}
 
                 <p class="post-meta">
                     {{ partial "post_meta_notes.html" . }}
@@ -40,9 +51,11 @@
 
                 <div class="read-more-section">
                     <!-- post-read-more  -->
-                    <h6><a href="{{ .Permalink }}" class="text-muted link-underline" alt="Link to {{ .Title }}">Watch it
-                     <i class="bi bi-arrow-right"></i></a> </h6>
+                    <h6><a href="{{ .Permalink }}" class="text-muted link-underline" alt="Link to {{ .Title }}">Read
+                            more <i class="bi bi-arrow-right"></i></a> </h6>
                 </div>
+			{{ end }}
+			
             </div>
 
             

@@ -169,6 +169,9 @@
 									  
 									} else if (element.startsWith("#$@")) {
 									  tagsTranslated = element.substring(3); // Remove "#$@" prefix
+									  
+									  //replace bullshit chars from tags (sometime translate returns those)
+									  tagsTranslated = tagsTranslated.replace(/[;.\?!@#\$%\^&\*\(\)=\+\[\]\{\}\\|\":'<>\/`~]/g, '');
 									} else {
 									  // Handle unexpected elements (if any)
 									  console.warn("Unexpected element:", element);
@@ -287,7 +290,8 @@
 			translations['en'] = {
 				title: title,
 				metaDescription: metaDescription,
-				description: description,
+				//replacing new line to br, for just english
+				description: description.replace(/\n/g, '<br/><br/>'), 
 				tags: tags
 			};
 			

@@ -10,17 +10,63 @@
         {{ if .Params.image }}
 		  {{ $externalURL := .Params.image }}
 		  {{ $randomNumber := div (mod (int (now.UnixNano)) 3) 1 }}
-		  {{ $newURL := printf "http://i%d.wp.com/%s" $randomNumber (replaceRE "^https?://(.*)" "$1" $externalURL) }}>
-		  
+		  {{ $newURL := printf "http://i%d.wp.com/%s" $randomNumber (replaceRE "^https?://(.*)" "$1" $externalURL) }}
 		  <img src="{{ $newURL }}" alt="{{ .Title }}" class="card-img-bottom img-fluid lazyload">
 		{{ end }}
 
    {{ end }}
 
         {{ if .Params.video }}
-        <video playsinline class="img-title" poster="{{ .Params.video.image | safeURL  }}" controls>
-          <source src="{{ .Params.video.url }}">
-        </video>
+		
+		 {{ if not .Params.video.baseURL }}
+			<video playsinline class="img-title" poster="{{ .Params.video.image }}" controls>
+			  <source src="{{ .Params.video.url }}">
+			</video>
+         {{ end }}
+		 
+		 
+		 {{ if .Params.video.baseURL }}		    
+		    <link rel="stylesheet" href="{{ "videojs/videojs.min.css" | absURL }}">		    
+			<script type="text/javascript" src="{{ "videojs/video.min.js" | absURL }}"></script>
+			<script type="text/javascript" src="{{ "videojs/nuevo.min.js" | absURL }}"></script>
+			
+			
+			<video id="player_1" class="video-js vjs-fluid vjs-default-skin" autoplay muted controls preload playsinline webkit-playsinline poster="{{ .Params.video.image }}">	
+             {{ if .Params.video.sources }} 
+               {{ $defaultSet := false }}			 
+			   {{ range .Params.video.sources }}
+					{{ if eq .label "720p" }}
+						<source src="{{ .src }}" res="{{ .res }}" label="{{ .label }}" type="{{ .type }}" default>
+						{{ $defaultSet = true }}
+					{{ else if and (eq .label "480p") (not $defaultSet) }}
+						<source src="{{ .src }}" res="{{ .res }}" label="{{ .label }}" type="{{ .type }}" default>
+						{{ $defaultSet = true }}
+					{{ else }}
+						<source src="{{ .src }}" res="{{ .res }}" label="{{ .label }}" type="{{ .type }}">
+					{{ end }}
+			   {{ end }}
+               
+               {{ else }}
+                <source src="{{ .Params.video.url }}" type="video/mp4">			   
+			 {{ end }}				
+					
+			</video>
+			
+			<script>
+			var player = videojs('player_1');
+			player.nuevo({  
+			buttonRewind: true, 
+			buttonForward: true, 
+
+			slideImage: '{{ .Params.video.baseURL }}timeline/timeline-0000.jpg',
+			ghostThumb:true,
+			slideType: 'horizontal', //optional
+			slideWidth: 108, //optional
+			slideHeight: 60 //optional				
+			});
+			</script>
+         {{ end }}
+		 
         {{ end }}
       </div>
     </div>
@@ -72,15 +118,7 @@
       {{ if .Params.tags }}
       <div class="blog-tags">
         {{ range .Params.tags }}
-        <!--<a href="{{ $.Site.LanguagePrefix | absURL }}/{{ . | urlize }}/">{{ . }}</a>-->
-		{{- if eq $.Site.Language.Lang "en" -}}
-		  <a href="{{ $.Site.BaseURL | absURL }}{{ . | urlize }}/">{{ . }}</a>
-		{{- else -}}
-		  <a href="{{ $.Site.LanguagePrefix | absURL }}/{{ . | urlize }}/">{{ . }}</a>
-		{{- end -}}
-		
-		
-		
+        <a href="{{ $.Site.LanguagePrefix | absURL }}/tag/{{ . | urlize }}/">{{ . }}</a>
         {{ end }}
       </div>
       {{ end }}
@@ -172,22 +210,21 @@
       </div>
 
       {{ if .Site.Params.showRelatedPosts }}
-		  {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink)
-		  }}
-		    {{ $.Scratch.Set "has_related" true }}
-		  {{ end }}
+      {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink)
+      }}
+      {{ $.Scratch.Set "has_related" true }}
+      {{ end }}
 
-        {{ if $.Scratch.Get "has_related" }}
+      {{ if $.Scratch.Get "has_related" }}
 
-          {{ $num_to_show := .Site.Params.related_content_limit | default 3 }}
-		  {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!="
-		  .Permalink) }}
+      {{ $num_to_show := .Site.Params.related_content_limit | default 3 }}
+      {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!="
+      .Permalink) }}
 
-		    {{ partial "post_preview_bottom_card.html" .}}
-		  {{ end }}
-		  
+      {{ partial "post_preview_bottom_card.html" .}}
+      {{ end }}
 
-        {{ end }}
+      {{ end }}
       {{ end }}
     </div>
   </div>
