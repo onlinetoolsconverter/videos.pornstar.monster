@@ -8,7 +8,6 @@ defaultContentLanguageInSubdir = false
 theme = 'lightbi-hugo'
 
 
-
 googleAnalytics = "XXX"
 enableRobotsTXT = true
 enableGitInfo = false
