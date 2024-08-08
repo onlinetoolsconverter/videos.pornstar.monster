@@ -8,6 +8,7 @@ defaultContentLanguageInSubdir = false
 theme = 'lightbi-hugo'
 
 
+
 googleAnalytics = "XXX"
 enableRobotsTXT = true
 enableGitInfo = false
@@ -21,7 +22,17 @@ Paginate = 6
 [minify]
   minifyOutput = false
   
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  taxonomyTerm = ["HTML"]
+
+  
 [params]
+    enableRSS = true
     showRelatedPosts = true #for lightbi related posts
     description = "Pornstar Monster"
     author = "Pornstar Monster"
@@ -37,7 +48,7 @@ Paginate = 6
 	summaryLength  = "9"
 	gcse = false
 	Lastmod = true
-	rss = true 
+	rss = false 
 	pagination = "10"
 	hideAuthor = true
 	darkMode = false
