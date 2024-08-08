@@ -82,12 +82,15 @@ foreach ($translations as $languageCode => $languageData) {
 		
 		$truncatedText = truncateString($title, 95);
 		$slug = slugify($truncatedText);
+		
+		$tagsOrigial = $tags;
+		$truncatedTags = truncateString($tags, 95);
 	
 	    //$url = "$languageName/$slug";
 		
 		$sources = "sources: " . json_encode($videoSources, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n";
 		
-		createPost($title, $slug, $metaDescription, $timeStamp, $tags, $thumbnailUrl, $contentURL, $videoBaseUrl, $duration, $sources, $description, $languageName, $languageCode, $slugOriginal);
+		createPost($title, $slug, $metaDescription, $timeStamp, $truncatedTags, $thumbnailUrl, $contentURL, $videoBaseUrl, $duration, $sources, $description, $languageName, $languageCode, $slugOriginal, $tagsOrigial);
 		
 		//get random thumbnails
 		//$randomKey = array_rand($thumbnails, 1);
@@ -110,7 +113,7 @@ echo "ok";
 
 
 
-function createPost($title, $slug, $meta_description, $timeStamp, $tags, $thumbnailUrl, $contentURL, $videoBaseUrl, $duration, $sources, $description, $languageName, $languageCode, $slugOriginal){
+function createPost($title, $slug, $meta_description, $timeStamp, $tags, $thumbnailUrl, $contentURL, $videoBaseUrl, $duration, $sources, $description, $languageName, $languageCode, $slugOriginal, $tagsOrigial){
 
 	
 	$post_template = <<<EOF
@@ -130,6 +133,7 @@ video:
 ---
 
 <p>$description</p>
+<p>Tags: $tagsOrigial</p>
 EOF;
 
 //when creating post, for $languageCode zh-CN is changed to zh (hugo don't recognise zh-CN)
