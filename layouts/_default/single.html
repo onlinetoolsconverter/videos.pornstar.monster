@@ -118,7 +118,7 @@
       {{ if .Params.tags }}
       <div class="blog-tags">
         {{ range .Params.tags }}
-        <a href="{{ $.Site.LanguagePrefix | absURL }}/tag/{{ . | urlize }}/">{{ . }}</a>
+        <a href="{{ $.Site.LanguagePrefix | absURL }}/{{ . | urlize }}/">{{ . }}</a>
         {{ end }}
       </div>
       {{ end }}
