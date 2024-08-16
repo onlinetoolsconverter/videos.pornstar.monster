@@ -8,7 +8,7 @@ defaultContentLanguageInSubdir = false
 theme = 'lightbi-hugo'
 
 
-googleAnalytics = "XXX"
+googleAnalytics = "G-RJ1VM1HR72"
 enableRobotsTXT = true
 enableGitInfo = false
 Paginate = 6
