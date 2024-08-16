@@ -335,7 +335,10 @@ else{ die("JSON Slug Must provide."); }
                 document.querySelector('.goog-te-combo').dispatchEvent(new Event('change'));
 
                 // Wait for translation to be applied
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                //await new Promise(resolve => setTimeout(resolve, 1500));
+				
+				//giving translation 5 seconds, because i am openning multiple tabs
+                await new Promise(resolve => setTimeout(resolve, 5000));
 				
 				
 			}
